@@ -19,12 +19,12 @@ class DateTest {
     @Test
     void testConstructor() {
         Date actualDate = new Date(1, 1, 1);
-        actualDate.setDay(1);
-        actualDate.setMonth(1);
-        actualDate.setYear(1);
-        assertEquals(1, actualDate.getDay());
-        assertEquals(1, actualDate.getMonth());
-        assertEquals(1, actualDate.getYear());
+        actualDate.setDay(2);
+        actualDate.setMonth(2);
+        actualDate.setYear(2);
+        assertEquals(2, actualDate.getDay());
+        assertEquals(2, actualDate.getMonth());
+        assertEquals(2, actualDate.getYear());
     }
 }
 
