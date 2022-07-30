@@ -8,7 +8,7 @@ public class WeatherDay {
     private double precipitation;
 
     public WeatherDay(Date date, int highTemp, int lowTemp, double avgTemp,
-                      double avgHumidity, double avgWind, double precipitation){
+                      double avgHumidity, double avgWind, double precipitation) {
         this.date = date;
         this.highTemp = highTemp;
         this.lowTemp = lowTemp;
@@ -17,19 +17,55 @@ public class WeatherDay {
         this.avgWind = avgWind;
         this.precipitation = precipitation;
     }
-    public Date getDate(){ return date; }
-    public int getHighTemp(){ return highTemp; }
-    public int getLowTemp(){ return lowTemp;};
-    public double getAvgTemp(){ return avgTemp; }
-    public double getAvgHumidity(){ return avgHumidity;}
-    public double getAvgWind(){ return avgWind;}
-    public double getPrecipitation(){ return precipitation;}
-    public double calcHeathIndex(){
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getHighTemp() {
+        return highTemp;
+    }
+
+    public int getLowTemp() {
+        return lowTemp;
+    }
+
+    ;
+
+    public double getAvgTemp() {
+        return avgTemp;
+    }
+
+    public double getAvgHumidity() {
+        return avgHumidity;
+    }
+
+    public double getAvgWind() {
+        return avgWind;
+    }
+
+    public double getPrecipitation() {
+        return precipitation;
+    }
+
+    public double calcHeathIndex() {
         int t = highTemp;
         double h = avgHumidity;
-        double heathIndex = -42.379*t + 2.04901523*h + 10.14333127*h -
-                0.22475541*t*h - 0.00683783*t*t + -0.054817117*h*h +
-                0.00122874*t*t*h +0.00085282*t*h*h - 0.00000199*t*t*h*h;
+        double heathIndex = -42.379 * t + 2.04901523 * h + 10.14333127 * h -
+                0.22475541 * t * h - 0.00683783 * t * t + -0.054817117 * h * h +
+                0.00122874 * t * t * h + 0.00085282 * t * h * h - 0.00000199 * t * t * h * h;
         return heathIndex;
+    }
+
+    public String toString() {
+        String result = "";
+        result += "Date " + date + "\n";
+        result += "High Temp        : " + highTemp + "\n";
+        result += "Low Temp         : " + lowTemp + "\n";
+        result += "Average Temp     : " + avgTemp + "\n";
+        result += "Average Humidity : " + avgHumidity + "\n";
+        result += "Average Wind     : " + avgWind + "\n";
+        result += "Precipitation    : " + precipitation + "\n";
+        return result;
     }
 }
