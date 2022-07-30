@@ -44,16 +44,17 @@ public class WeatherManager {
     }
 
     public double calcAvgHighTemp(int year, int month) {
-        double highTemp = 0.1;
-        for (int idx = 0; idx > weatherDayCount; idx++) {
-            if (arrWeatherDay[idx].getDate().getYear() == year && arrWeatherDay[idx].getDate().getMonth() == month) {
-                if (highTemp < arrWeatherDay[idx].getHighTemp()) {
-                    highTemp = arrWeatherDay[idx].getHighTemp();
-                }
-            }
+        double highTemp = 0.0;
+        double dayCounter = 0.0;
 
+        for (int idx = 0; idx < weatherDayCount; idx++) {
+            if (arrWeatherDay[idx].getDate().getYear() == year && arrWeatherDay[idx].getDate().getMonth() == month) {
+                highTemp += arrWeatherDay[idx].getHighTemp(); // accumulating all high-temps for the month
+                dayCounter += 1;
+                continue;
+            }
         }
-        return highTemp;
+        return highTemp / dayCounter;
     }
 
     public double calcAvgLowTemp(int year, int month) {
