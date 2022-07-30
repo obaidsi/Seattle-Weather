@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Date {
     private int year;
     private int month;
@@ -76,4 +78,11 @@ public class Date {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Date that = (Date) o;
+        return year == that.year && month == that.month && day == that.day;
+    }
 }
