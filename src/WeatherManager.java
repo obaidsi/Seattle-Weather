@@ -60,17 +60,31 @@ public class WeatherManager {
         return temps / dayCounter;
     }
 
-    public double calcAvgLowTemp(int year, int month) {
-        return 0.5; // To be calculated
-    }
-
     public double calcRainTotal(int year, int month) {
-        return 0.5; // To be calculated
+        double rainTotal = 0.0;
+        for (int idx = 0; idx < weatherDayCount; idx++) {
+            if (arrWeatherDay[idx].getDate().getYear() == year && arrWeatherDay[idx].getDate().getMonth() == month) {
+                rainTotal += arrWeatherDay[idx].getPrecipitation();
+            }
+        }
+        return rainTotal;
     }
 
-    public int calcRainiestMonth(int year) {
-        return 3;
-    } // To be calculated
+    public double calcRainiestMonth(int year) {
+        double rainTotal = calcRainTotal(year, 1);
+        double newRainTotal = 0.0;
+        for (int month = 2; month <= 12; month++) {
+            newRainTotal = calcRainTotal(year, month);
+            if (newRainTotal > rainTotal) {
+                rainTotal = newRainTotal;
+            }
+        }
+        return rainTotal;
+    }
+
+    public int calcLongestWarmingTrend(int year) {
+        return 1;
+    }
 }
 
 // public DateRange calcLongestWarmingTrend(int year) return new DateRange;}
