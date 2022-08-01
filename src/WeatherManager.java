@@ -82,10 +82,31 @@ public class WeatherManager {
         return rainTotal;
     }
 
-    public int calcLongestWarmingTrend(int year) {
-        return 1;
+    public DateRange calcLongestWarmingTrend(int year) {
+        int trend = 0;
+        int longestTrend = 0;
+        int startIdx = 0;
+        int endIdx = 0;
+        double firstTemp = 0.0;
+        double secondTemp = 0.0;
+        for (int idx = 1; idx < weatherDayCount; idx++) {
+            if (arrWeatherDay[idx].getDate().getYear() == year) {
+                firstTemp = arrWeatherDay[idx - 1].getHighTemp();
+                secondTemp = arrWeatherDay[idx].getHighTemp();
+                if (secondTemp > firstTemp) {
+                    trend++;
+                    if (trend > longestTrend) {
+                        longestTrend = trend;
+                        startIdx = idx - longestTrend;
+                        endIdx = idx;
+                    }
+                } else {
+                    trend = 0;
+                }
+            }
+        }
+        return new DateRange(arrWeatherDay[startIdx].getDate(), arrWeatherDay[endIdx].getDate());
     }
 }
 
-// public DateRange calcLongestWarmingTrend(int year) return new DateRange;}
 

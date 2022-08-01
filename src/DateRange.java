@@ -4,35 +4,60 @@ public class DateRange {
 
     /**
      * Full constructor for DateRange
+     *
      * @param start start Date
-     * @param end end Date
+     * @param end   end Date
      */
-    public DateRange(Date start, Date end){
+    public DateRange(Date start, Date end) {
         this.start = start;
-        this.end   = end;
+        this.end = end;
     }
 
     /**
      * Retrieves the start Date
-     * @return  start date
+     *
+     * @return start date
      */
-    public Date getStart(){ return start; }
+    public Date getStart() {
+        return start;
+    }
 
     /**
      * Retrieves the end date
-     * @return  return the end date
+     *
+     * @return return the end date
      */
-    public Date getEnd(){ return end; }
+    public Date getEnd() {
+        return end;
+    }
 
     /**
      * Update the start date
+     *
      * @param start start date
      */
-    public void setStart(Date start){ this.start = start; }
+    public void setStart(Date start) {
+        this.start = start;
+    }
 
     /**
      * Update the end date
-     * @param end   end date
+     *
+     * @param end end date
      */
-    public void setEnd(Date end){ this.end = end; }
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public String toString() {
+        String result = start + " to  " + end;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        DateRange that = (DateRange) o;
+        return (this.start.equals(that.start) && this.end.equals(that.end));
+    }
 }
+

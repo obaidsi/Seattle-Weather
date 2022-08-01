@@ -8,10 +8,8 @@ public class Main {
         System.out.println(wM.findWeatherDay(date));
         double avgHighTemp = wM.calcAvgTemp(2018, 2, true);
         System.out.println(avgHighTemp + "\n");
-        for (int month = 1; month <= 12; month++) {
-            double rainTotal = wM.calcRainTotal(2019, month);
-            System.out.println(rainTotal);
-        }
-        System.out.println("\n" + wM.calcRainiestMonth(2019));
+        System.out.println("\n" + wM.calcRainiestMonth(2019) + "\n");
+        System.out.println(wM.calcLongestWarmingTrend(2018));
+        System.out.println(wM.calcLongestWarmingTrend(2019));
     }
 }

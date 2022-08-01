@@ -22,5 +22,8 @@ class WeatherManagerTest {
         assertEquals(45.1785, wM.calcAvgTemp(2018, 2, true), 0.0001);
         assertEquals(36.8214, wM.calcAvgTemp(2018, 2, false), 0.0001);
         assertEquals(2.59, wM.calcRainTotal(2018, 3), 0.01);
+        DateRange dR = new DateRange(new Date(2018, 8, 2), new Date(2018, 8, 8));
+        assertEquals(dR, wM.calcLongestWarmingTrend(2018));
     }
+
 }
