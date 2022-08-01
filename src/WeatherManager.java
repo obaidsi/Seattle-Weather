@@ -43,18 +43,21 @@ public class WeatherManager {
         return -1;    // -1 indication that WeatherDay DNE for the given data.
     }
 
-    public double calcAvgHighTemp(int year, int month) {
-        double highTemp = 0.0;
+    public double calcAvgTemp(int year, int month, boolean whichTemp) {
+        double temps = 0.0;
         double dayCounter = 0.0;
 
         for (int idx = 0; idx < weatherDayCount; idx++) {
             if (arrWeatherDay[idx].getDate().getYear() == year && arrWeatherDay[idx].getDate().getMonth() == month) {
-                highTemp += arrWeatherDay[idx].getHighTemp(); // accumulating all high-temps for the month
+                if (whichTemp) { // If True calc avgHigh Temperature
+                    temps += arrWeatherDay[idx].getHighTemp(); // accumulating all high-temps for the month
+                } else { // calc avgLowTemp
+                    temps += arrWeatherDay[idx].getLowTemp(); // accumulating all low-temps for the month
+                }
                 dayCounter += 1;
-                continue;
             }
         }
-        return highTemp / dayCounter;
+        return temps / dayCounter;
     }
 
     public double calcAvgLowTemp(int year, int month) {

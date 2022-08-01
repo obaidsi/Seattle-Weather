@@ -19,6 +19,7 @@ class WeatherManagerTest {
     @Test
     void testCalcAvgHighTemp() throws FileNotFoundException {
         WeatherManager wM = new WeatherManager("SeattleWeather.txt");
-        assertEquals(45.1785, wM.calcAvgHighTemp(2018, 2), 0.0001);
+        assertEquals(45.1785, wM.calcAvgTemp(2018, 2, true), 0.0001);
+        assertEquals(36.8214, wM.calcAvgTemp(2018, 2, false), 0.0001);
     }
 }
